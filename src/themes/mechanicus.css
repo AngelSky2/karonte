@@ -1,0 +1,32 @@
+/* Mechanicus Theme - Warhammer 40K */
+:root {
+    /* Colores Primarios */
+    --bg-primary: #022004;
+    --bg-secondary: #022004;
+    --bg-tertiary: #0a2a0d;
+    
+    /* Colores de Acentos */
+    --accent-primary: #42c05f;
+    --accent-secondary: #42c05f;
+    --accent-danger: #ff0000;
+    --accent-warning: #ffaa00;
+    
+    /* Bordes */
+    --border-color: #42c05f;
+    --border-color-secondary: #42c05f;
+    --border-color-danger: #ff0000;
+    
+    /* Texto */
+    --text-primary: #42c05f;
+    --text-secondary: #42c05f;
+    --text-tertiary: #888899;
+    --text-light: #ccddee;
+    
+    /* Sombras y Neon */
+    --glow-primary: 0 0 5px #42c05f, 0 0 10px #42c05f;
+    --glow-secondary: 0 0 8px #42c05f, 0 0 15px #42c05f;
+    --glow-danger: 0 0 5px #ff0000;
+    
+    /* Fuente */
+    --font-mono: 'Courier New', monospace;
+}

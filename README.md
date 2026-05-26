@@ -1,16 +1,25 @@
-# React + Vite
+# ⚙️ Karonte - Mechanicus Console
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un asistente inteligente con interfaz estilo Warhammer 40K que combina **reconocimiento de voz** y **entrada de texto** para gestionar tareas. Diseñado como una aplicación de escritorio que simula una consola Mechanicus del Adeptus Mechanicus.
 
-Currently, two official plugins are available:
+## 🎯 Objetivos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Asistente Multimodal**: Responde a comandos por voz o texto
+- **Gestor de Tareas**: Crea, edita, elimina y organiza listas de tareas
+- **Interfaz Temática**: Diseño inspirado en Warhammer 40K (consola Mechanicus)
+- **Aplicación de Escritorio**: Experiencia independiente de navegadores
 
-## React Compiler
+## 🚀 Features Planeadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [ ] Reconocimiento de voz (entrada de comandos)
+- [ ] Procesamiento de lenguaje natural
+- [ ] Gestor de lista de tareas
+- [ ] Interfaz temática Warhammer 40K
+- [ ] Almacenamiento local de datos
+- [ ] Respuestas interactivas del asistente
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** + **Vite** - Framework y build tool
+- **Voice API** - Reconocimiento y síntesis de voz
+- **Electron** (planeado) - Para aplicación de escritorio nativa
