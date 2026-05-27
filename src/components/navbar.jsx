@@ -1,17 +1,7 @@
-import { useState } from 'react';
 import '../css/navbar.css';
 
-function Navbar({ onTabChange }) {
-  const [activeTab, setActiveTab] = useState('chat');
-
-  const tabs = [
-    { id: 'chat', label: 'chat del servidor' },
-    { id: 'tasks', label: 'tareas para el imperio' },
-    { id: 'mission', label: 'informacion de mision' },
-  ];
-
+function Navbar({ tabs = [], activeTab = 'chat', onTabChange }) {
   const handleTabClick = (tabId) => {
-    setActiveTab(tabId);
     if (onTabChange) {
       onTabChange(tabId);
     }
