@@ -7,9 +7,9 @@ function App() {
         <div className="IAbox">
 
         </div>
-
-        <Navbar />
-
+        <div className="navbar">
+          <Navbar />
+        </div>
       </div>
       <div className="grid-container-title-terminal-chat-input">
         <div className="title">
