@@ -23,7 +23,7 @@
     flex-direction: column;
     background-color: var(--bg-primary);
     padding: 20px;
-    box-shadow: inset 0 0 8px #42c05f, 0 0 12px #42c05f;
+    box-shadow: inset 0 0 8px var(--glow-color), 0 0 12px var(--glow-color);
     border-right: 2px solid var(--border-color);
 }
 
@@ -43,7 +43,7 @@
     padding: 10px;
     color: var(--text-primary);
     text-shadow: var(--glow-primary);
-    box-shadow: inset 0 0 5px #42c05f, 0 0 8px #42c05f;
+    box-shadow: inset 0 0 5px var(--glow-color), 0 0 8px var(--glow-color);
 }
 
 .terminal-chat {
@@ -53,14 +53,14 @@
     border: 2px solid var(--border-color-secondary);
     padding: 15px;
     background-color: var(--bg-primary);
-    background-image: linear-gradient(rgba(2, 34, 4, 0.6), rgba(2, 34, 4, 0.6)), url('./assets/mechanicus.png');
+    background-image: linear-gradient(var(--overlay-bg), var(--overlay-bg)), url('./assets/mechanicus.png');
     background-position: right center;
     background-repeat: no-repeat;
     background-size: 50%;
     background-attachment: local;
     color: var(--text-secondary);
     text-shadow: var(--glow-secondary);
-    box-shadow: inset 0 0 5px #42c05f, 0 0 10px #42c05f;
+    box-shadow: inset 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
     filter: brightness(0.95);
 }
 
@@ -70,7 +70,7 @@
     border: 2px solid var(--border-color);
     padding: 15px;
     color: var(--text-primary);
-    box-shadow: inset 0 0 5px #42c05f, 0 0 8px #42c05f;
+    box-shadow: inset 0 0 5px var(--glow-color), 0 0 8px var(--glow-color);
 }
 
 .input input {
@@ -80,7 +80,7 @@
     color: var(--text-primary);
     padding: 8px;
     font-family: var(--font-mono);
-    box-shadow: inset 0 0 3px #42c05f, 0 0 5px #42c05f;
+    box-shadow: inset 0 0 3px var(--glow-color), 0 0 5px var(--glow-color);
 }
 
 .IAbox {
@@ -89,7 +89,7 @@
     background-color: var(--bg-tertiary);
     padding: 15px;
     border: 3px solid var(--border-color);
-    box-shadow: inset 0 0 10px #42c05f, 0 0 15px #42c05f;
+    box-shadow: inset 0 0 10px var(--glow-color), 0 0 15px var(--glow-color);
     color: var(--text-primary);
     text-shadow: var(--glow-primary);
 }
@@ -100,5 +100,5 @@
     padding: 10px;
     border-top: 2px solid var(--border-color);
     overflow-y: auto;
-    box-shadow: inset 0 0 5px #42c05f;
+    box-shadow: inset 0 0 5px var(--glow-color);
 }

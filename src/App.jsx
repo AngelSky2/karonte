@@ -1,5 +1,5 @@
 import './App.css'
-
+import Navbar from './components/navbar';
 function App() {
   return (
     <div className="layaout">
@@ -7,9 +7,9 @@ function App() {
         <div className="IAbox">
 
         </div>
-        <div className="navbar">
 
-        </div>
+        <Navbar />
+
       </div>
       <div className="grid-container-title-terminal-chat-input">
         <div className="title">
