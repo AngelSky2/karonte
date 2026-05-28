@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const chatRoutes = require('./routes/chatRoutes');
+const voiceRoutes = require('./routes/voiceRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -12,6 +14,8 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/chat', chatRoutes);
+app.use('/api/voice', voiceRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Ruta de prueba
 app.get('/api/health', (req, res) => {
@@ -22,9 +26,9 @@ app.get('/api/health', (req, res) => {
 app.listen(PORT, () => {
   console.log(`
 ╔════════════════════════════════════════╗
-║  🔧 Backend Karonte Iniciado           ║
-║  Puerto: ${PORT}                            ║
-║  URL: http://localhost:${PORT}           ║
+║  🔧 Backend Karonte Iniciado            ║
+║  Puerto: ${PORT}                       ║
+║  URL: http://localhost:${PORT}         ║
 ╚════════════════════════════════════════╝
   `);
 });

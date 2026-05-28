@@ -5,6 +5,7 @@ import Title from './components/title';
 import Chat from './components/terminal/chat';
 import Input from './components/input';
 import LoadingScreen from './components/LoadingScreen';
+import AIAnimation from './components/AIAnimation';
 
 const TABS = [
   { id: 'chat', label: 'chat del servidor' },
@@ -17,9 +18,12 @@ function App() {
   const [activeTab, setActiveTab] = useState('chat');
   const [messageRefresh, setMessageRefresh] = useState(0);
   const [showLoading, setShowLoading] = useState(true);
+  const [userMessage, setUserMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleMessageSent = () => {
-    setMessageRefresh(prev => prev + 1);
+  const handleMessageSent = (messageText) => {
+    setUserMessage(messageText);
+    // No incrementar refreshTrigger aquí, dejar que se actualice cuando la respuesta llegue
   };
 
   const handleLoadingComplete = () => {
@@ -32,7 +36,7 @@ function App() {
       <div className="layaout">
         <div className="grid-container-AI-navbar">
           <div className="IAbox">
-
+            <AIAnimation />
           </div>
           <div className="navbar">
             <Navbar tabs={TABS} onTabChange={setActiveTab} />
@@ -43,10 +47,15 @@ function App() {
             <Title activeTab={activeTab} tabs={TABS} />
           </div>
           <div className="terminal-chat">
-            <Chat activeTab={activeTab} refreshTrigger={messageRefresh} />
+            <Chat activeTab={activeTab} refreshTrigger={messageRefresh} userMessage={userMessage} onMessageDisplayed={() => setUserMessage(null)} isLoading={isLoading} onLoadingComplete={() => setIsLoading(false)} />
           </div>
           <div className="input">
-            <Input activeTab={activeTab} onMessageSent={handleMessageSent} />
+            <Input 
+              activeTab={activeTab} 
+              onMessageSent={handleMessageSent} 
+              onLoadingChange={setIsLoading}
+              onResponseReceived={() => setMessageRefresh(prev => prev + 1)}
+            />
           </div>
         </div>
       </div>

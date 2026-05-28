@@ -6,9 +6,6 @@ function LoadingScreen({ onLoadingComplete }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    let voiceAttempts = 0;
-    const maxAttempts = 20;
-
     // Simular progreso de carga
     const progressInterval = setInterval(() => {
       setProgress(prev => {
@@ -17,77 +14,84 @@ function LoadingScreen({ onLoadingComplete }) {
       });
     }, 400);
 
-    const attemptSpeak = () => {
-      const synth = window.speechSynthesis;
-      const voices = synth.getVoices();
+    const attemptSpeak = async () => {
+      try {
+        console.log('🎤 Solicitando síntesis de voz al backend...');
+        
+        const response = await fetch('http://localhost:5000/api/voice/synthesize', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: 'Bienvenido, Guardia Imperial. cargando servidor',
+            lang: 'es'
+          })
+        });
 
-      console.log(`🎤 Intento ${voiceAttempts + 1}/${maxAttempts} - Voces: ${voices.length}`);
-
-      if (voices.length === 0) {
-        voiceAttempts++;
-        if (voiceAttempts < maxAttempts) {
-          setTimeout(attemptSpeak, 500);
-        } else {
-          console.log('❌ No se encontraron voces');
-          setProgress(100);
-          completeLoading();
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}`);
         }
-        return;
+
+        // Convertir respuesta a blob de audio
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+
+        // Crear elemento audio y reproducir
+        const audio = new Audio(audioUrl);
+        audio.volume = 1;
+        
+        audio.onended = () => {
+          console.log('✓ Audio completado');
+          URL.revokeObjectURL(audioUrl);
+          completeLoading();
+        };
+
+        audio.onerror = (error) => {
+          console.log('⚠️ Error reproduciendoaudio:', error);
+          URL.revokeObjectURL(audioUrl);
+          completeLoading();
+        };
+
+        console.log('▶️ Reproduciendo audio...');
+        audio.play().catch(err => {
+          console.log('⚠️ No se pudo reproducir:', err);
+          completeLoading();
+        });
+
+      } catch (error) {
+        console.log('⚠️ Error en síntesis:', error.message);
+        completeLoading();
       }
-
-      synth.cancel();
-      const utterance = new SpeechSynthesisUtterance('Bienvenido, Guardia Imperial');
-      
-      let selectedVoice = voices.find(voice => voice.lang.includes('es'));
-      if (!selectedVoice) selectedVoice = voices[0];
-      
-      utterance.voice = selectedVoice;
-      utterance.lang = 'es-ES';
-      utterance.rate = 0.7;
-      utterance.pitch = 0.9;
-      utterance.volume = 1.0;
-
-      console.log('🗣️ Reproduciendo:', selectedVoice?.name);
-
-      utterance.onerror = () => {
-        console.error('❌ Error al reproducir');
-        setProgress(100);
-        completeLoading();
-      };
-
-      utterance.onend = () => {
-        console.log('✓ Voz completada');
-        setProgress(100);
-        completeLoading();
-      };
-
-      synth.speak(utterance);
     };
 
     const completeLoading = () => {
       setTimeout(() => {
-        setIsVisible(false);
-        onLoadingComplete();
-      }, 300);
+        setProgress(100);
+        setTimeout(() => {
+          setIsVisible(false);
+          onLoadingComplete();
+        }, 300);
+      }, 500);
     };
 
+    // Esperar 1 segundo y luego intentar
     const delayTimeout = setTimeout(() => {
       attemptSpeak();
-    }, 300);
+    }, 1000);
 
     const maxTimeout = setTimeout(() => {
       console.log('⏱️ Timeout - completando');
       clearInterval(progressInterval);
       setProgress(100);
-      window.speechSynthesis.cancel();
-      completeLoading();
-    }, 10000);
+      setIsVisible(false);
+      onLoadingComplete();
+    }, 15000);
 
     return () => {
       clearInterval(progressInterval);
       clearTimeout(delayTimeout);
       clearTimeout(maxTimeout);
-      window.speechSynthesis.cancel();
     };
   }, [onLoadingComplete]);
 

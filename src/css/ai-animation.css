@@ -1,0 +1,201 @@
+.ai-animation-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(66, 192, 95, 0.05) 0%, transparent 70%);
+}
+
+/* Núcleo Central */
+.ai-core {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.core-dot {
+  width: 0px;
+  height: 0px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px var(--accent-primary),
+    0 0 20px var(--accent-primary),
+    0 0 30px rgba(66, 192, 95, 0.6),
+    inset 0 0 10px rgba(66, 192, 95, 0.8);
+  animation: pulse-core 2s ease-in-out infinite;
+}
+
+@keyframes pulse-core {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px var(--accent-primary),
+      0 0 20px var(--accent-primary),
+      0 0 30px rgba(66, 192, 95, 0.6),
+      inset 0 0 10px rgba(66, 192, 95, 0.8);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px var(--accent-primary),
+      0 0 40px var(--accent-primary),
+      0 0 60px rgba(66, 192, 95, 0.9),
+      inset 0 0 20px rgba(66, 192, 95, 1);
+    transform: scale(1.2);
+  }
+}
+
+/* Anillos Orbitales */
+.ai-rings {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring {
+  position: absolute;
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  opacity: 0.7;
+  box-shadow: 
+    0 0 5px var(--accent-primary),
+    inset 0 0 5px rgba(66, 192, 95, 0.3);
+}
+
+.ring-1 {
+  width: 100px;
+  height: 100px;
+  animation: rotate-ring 4s linear infinite;
+}
+
+.ring-2 {
+  width: 140px;
+  height: 140px;
+  animation: rotate-ring-reverse 5s linear infinite;
+  opacity: 0.5;
+}
+
+.ring-3 {
+  width: 180px;
+  height: 180px;
+  animation: rotate-ring 6s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes rotate-ring {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-ring-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* Ondas Pulsantes */
+.ai-waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wave {
+  position: absolute;
+  border: 1px solid var(--accent-primary);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.wave-1 {
+  width: 80px;
+  height: 80px;
+  animation: pulse-wave 2s ease-out infinite;
+  animation-delay: 0s;
+}
+
+.wave-2 {
+  width: 80px;
+  height: 80px;
+  animation: pulse-wave 2s ease-out infinite;
+  animation-delay: 0.5s;
+}
+
+.wave-3 {
+  width: 80px;
+  height: 80px;
+  animation: pulse-wave 2s ease-out infinite;
+  animation-delay: 1s;
+}
+
+.wave-4 {
+  width: 80px;
+  height: 80px;
+  animation: pulse-wave 2s ease-out infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes pulse-wave {
+  0% {
+    width: 80px;
+    height: 80px;
+    opacity: 1;
+    box-shadow: 0 0 5px var(--accent-primary);
+  }
+  100% {
+    width: 180px;
+    height: 180px;
+    opacity: 0;
+    box-shadow: 0 0 20px var(--accent-primary);
+  }
+}
+
+/* Efecto adicional: puntos orbitales */
+.ai-animation-container::before,
+.ai-animation-container::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-primary);
+}
+
+.ai-animation-container::before {
+  animation: orbit-dot 8s linear infinite;
+}
+
+.ai-animation-container::after {
+  animation: orbit-dot 8s linear infinite;
+  animation-delay: 4s;
+}
+
+@keyframes orbit-dot {
+  0% {
+    transform: translate(90px, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(90px, 0) rotate(360deg);
+  }
+}

@@ -23,9 +23,9 @@
     --text-light: #ccddee;
     
     /* Sombras y Neon */
-    --glow-primary: 0 0 5px #42c05f, 0 0 10px #42c05f;
-    --glow-secondary: 0 0 8px #42c05f, 0 0 15px #42c05f;
-    --glow-danger: 0 0 5px #ff0000;
+    --glow-primary: 0 0 2px #42c05f, 0 0 8px #42c05f;
+    --glow-secondary: 0 0 2px #42c05f, 0 0 10px #42c05f;
+    --glow-danger: 0 0 3px #ff0000;
     
     /* Glow Individual */
     --glow-color: #42c05f;
