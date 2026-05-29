@@ -29,28 +29,44 @@ const initializeDatabase = () => {
       tab TEXT DEFAULT 'chat',
       timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
     )
-  `);
+  `, (err) => {
+    if (err) {
+      console.error('Error creando tabla messages:', err);
+    } else {
+      console.log('✓ Tabla messages lista');
+    }
+  });
 
-  // Tabla de tareas
+  // Tabla de tareas (actualizada con campos completos)
   db.run(`
     CREATE TABLE IF NOT EXISTS tasks (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
       description TEXT,
+      due_date DATETIME,
+      checklist TEXT DEFAULT '[]',
       completed BOOLEAN DEFAULT 0,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
-  `);
-
-  // Limpiar historial de mensajes al reiniciar
-  db.run(`DELETE FROM messages`, (err) => {
+  `, (err) => {
     if (err) {
-      console.error('Error limpiando mensajes:', err);
+      console.error('Error creando tabla tasks:', err);
     } else {
-      console.log('✓ Historial de chat reiniciado');
+      console.log('✓ Tabla tasks lista');
     }
   });
+
+  // Limpiar historial de mensajes al reiniciar (con delay para asegurar que la tabla existe)
+  setTimeout(() => {
+    db.run(`DELETE FROM messages`, (err) => {
+      if (err) {
+        console.error('Error limpiando mensajes:', err);
+      } else {
+        console.log('✓ Historial de chat reiniciado');
+      }
+    });
+  }, 500);
 
   console.log('✓ Tablas inicializadas');
 };

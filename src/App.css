@@ -48,7 +48,8 @@
 
 .terminal-chat {
     flex: 1;
-    overflow-y: auto;
+    /* prevent inner scrolling on terminal area to avoid nested scrollbars */
+    overflow-y: hidden;
     margin-bottom: 15px;
     border: 2px solid var(--border-color-secondary);
     padding: 15px;

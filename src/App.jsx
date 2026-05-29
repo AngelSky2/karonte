@@ -4,6 +4,8 @@ import Navbar from './components/navbar';
 import Title from './components/title';
 import Chat from './components/terminal/chat';
 import Input from './components/input';
+import TasksView from './components/tasks/TasksView';
+import MissionInfo from './components/mission/MissionInfo';
 import LoadingScreen from './components/LoadingScreen';
 import AIAnimation from './components/AIAnimation';
 
@@ -47,16 +49,24 @@ function App() {
             <Title activeTab={activeTab} tabs={TABS} />
           </div>
           <div className="terminal-chat">
-            <Chat activeTab={activeTab} refreshTrigger={messageRefresh} userMessage={userMessage} onMessageDisplayed={() => setUserMessage(null)} isLoading={isLoading} onLoadingComplete={() => setIsLoading(false)} />
+            {activeTab === 'tasks' ? (
+              <TasksView />
+            ) : activeTab === 'mission' ? (
+              <MissionInfo />
+            ) : (
+              <Chat activeTab={activeTab} refreshTrigger={messageRefresh} userMessage={userMessage} onMessageDisplayed={() => setUserMessage(null)} isLoading={isLoading} onLoadingComplete={() => setIsLoading(false)} />
+            )}
           </div>
-          <div className="input">
-            <Input 
-              activeTab={activeTab} 
-              onMessageSent={handleMessageSent} 
-              onLoadingChange={setIsLoading}
-              onResponseReceived={() => setMessageRefresh(prev => prev + 1)}
-            />
-          </div>
+          {activeTab !== 'tasks' && (
+            <div className="input">
+              <Input 
+                activeTab={activeTab} 
+                onMessageSent={handleMessageSent} 
+                onLoadingChange={setIsLoading}
+                onResponseReceived={() => setMessageRefresh(prev => prev + 1)}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

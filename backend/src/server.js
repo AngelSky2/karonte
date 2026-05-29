@@ -4,6 +4,7 @@ require('dotenv').config();
 const chatRoutes = require('./routes/chatRoutes');
 const voiceRoutes = require('./routes/voiceRoutes');
 const aiRoutes = require('./routes/aiRoutes');
+const tasksRoutes = require('./routes/tasksRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/chat', chatRoutes);
 app.use('/api/voice', voiceRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/tasks', tasksRoutes);
 
 // Ruta de prueba
 app.get('/api/health', (req, res) => {
