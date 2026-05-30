@@ -59,7 +59,7 @@ GEMINI_API_KEY=tu_api_key_aqui
 > 3. Crear un proyecto en Google Cloud
 > 4. Copiar la key generada
 
-## 🚀 Ejecutar el Proyecto
+## Ejecutar el Proyecto
 
 ### Opción 1: Ejecutar Todo Junto (Recomendado)
 
@@ -134,7 +134,7 @@ Karonte/
 - **Administración de Logística** - (Próximamente)
 - **Información de Misión** - (Próximamente)
 
-## 🔧 Comandos Disponibles
+## Comandos Disponibles
 
 ### Frontend
 ```bash

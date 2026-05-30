@@ -70,7 +70,7 @@ const getVoiceForText = async (req, res) => {
   try {
     // Dividir en fragmentos de ~100 caracteres
     const chunks = splitIntoChunks(text, 100);
-    console.log(`🎤 Generando ${chunks.length} fragmentos de audio...`);
+    console.log(`Generando ${chunks.length} fragmentos de audio...`);
 
     // Generar audio para cada fragmento
     const audioChunks = [];
@@ -97,7 +97,7 @@ const getVoiceForText = async (req, res) => {
       message: 'Fragmentos de audio generados correctamente'
     });
 
-    console.log(`✓ ${audioChunks.length} fragmentos generados exitosamente`);
+    console.log(`[OK] ${audioChunks.length} fragmentos generados exitosamente`);
   } catch (error) {
     console.error('❌ Error:', error.message);
     res.status(500).json({ error: error.message });
@@ -137,7 +137,7 @@ const sendMessage = async (req, res) => {
     const response = result.response;
     const aiText = response.text();
 
-    console.log(`✓ Respuesta generada: "${aiText.substring(0, 50)}..."`);
+    console.log(`[OK] Respuesta generada: "${aiText.substring(0, 50)}..."`);
 
     // 3. Guardar respuesta de Karonte en BD
     await new Promise((resolve, reject) => {

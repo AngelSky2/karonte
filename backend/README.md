@@ -1,4 +1,4 @@
-# 🔧 Backend Karonte
+# Backend Karonte
 
 Backend para la aplicación Karonte - Asistente IA Mechanicus
 
@@ -7,7 +7,7 @@ Backend para la aplicación Karonte - Asistente IA Mechanicus
 - Node.js (v14+)
 - npm o yarn
 
-## 🚀 Instalación
+## Instalación
 
 ```bash
 cd backend

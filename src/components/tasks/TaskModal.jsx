@@ -27,7 +27,7 @@ function TaskModal({ task, isOpen, onClose, onChecklistChange }) {
       <div className="modal-content task-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>{task.title}</h2>
-          <button className="close-btn" onClick={onClose}>✕</button>
+            <button className="close-btn" onClick={onClose}>X</button>
         </div>
 
         <div className="modal-body">

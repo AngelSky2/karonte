@@ -103,13 +103,13 @@ function TasksView() {
           className="btn-new-task"
           onClick={() => setShowFormModal(true)}
         >
-          ➕ Nueva Tarea
+          + Nueva Tarea
         </button>
       </div>
 
       <div className="tasks-grid">
         {tasks.length > 0 ? (
-          tasks.slice(0, 6).map(task => (
+          tasks.slice(0, 20).map(task => (
             <TaskCard
               key={task.id}
               task={task}

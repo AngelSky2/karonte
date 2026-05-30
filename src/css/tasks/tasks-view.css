@@ -56,14 +56,14 @@
 
 .tasks-grid {
   display: grid;
-  /* fixed card width to enable horizontal scroll when many cards exist */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
-  /* match row height to card so cells have no extra empty space */
-  grid-auto-rows: 200px;
+  /* Flexible columns that wrap left-to-right; cards will fill available width */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  /* row height adapts to card content */
+  grid-auto-rows: auto;
   gap: 16px;
-  flex: 1;
-  overflow-x: auto;
-  overflow-y: hidden;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   align-content: start;
   padding: 16px 0;
   scrollbar-width: thin;
@@ -90,13 +90,8 @@
 }
 
 /* Posicionamiento alternado: arriba-izq, abajo-derecha, arriba-izq, etc */
-.task-card:nth-child(odd) {
-  grid-row: 1;
-}
 
-.task-card:nth-child(even) {
-  grid-row: 2;
-}
+/* Remove alternating positioning so cards flow left-to-right and wrap naturally */
 
 .no-tasks {
   grid-column: 1 / -1;

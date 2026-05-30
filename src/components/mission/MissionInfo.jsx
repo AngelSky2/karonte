@@ -16,7 +16,7 @@ function MissionInfo() {
       <h3 style={{ marginTop: 12, color: 'var(--accent-primary)' }}>Cómo usarla</h3>
       <ul style={{ lineHeight: 1.6 }}>
         <li>Ve a la pestaña <strong>tareas para el imperio</strong> para ver las tareas más cercanas en fecha de entrega.</li>
-        <li>Haz clic en <strong>➕ Nueva Tarea</strong> para crear una tarea con título, descripción, fecha y checklist.</li>
+        <li>Haz clic en <strong>+ Nueva Tarea</strong> para crear una tarea con título, descripción, fecha y checklist.</li>
         <li>Marca los elementos del checklist para actualizar el progreso. Cuando una tarea está completada (o no tiene checklist) aparece el botón <strong>Eliminar</strong>.</li>
         <li>Haz clic sobre una tarjeta para ver el detalle completo en un modal y editar elementos si es necesario.</li>
       </ul>

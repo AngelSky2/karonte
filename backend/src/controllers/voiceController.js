@@ -9,7 +9,7 @@ const synthesizeVoice = async (req, res) => {
   }
 
   try {
-    console.log(`🎤 Generando audio con Google Translate: "${text}"`);
+    console.log(`Generando audio con Google Translate: "${text}"`);
     
     // URL de Google Translate TTS
     const googleUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob&ttsspeed=0.5`;
@@ -33,7 +33,7 @@ const synthesizeVoice = async (req, res) => {
     res.setHeader('Content-Length', audioBuffer.length);
     res.send(audioBuffer);
 
-    console.log('✓ Audio de Google Translate enviado');
+    console.log('[OK] Audio de Google Translate enviado');
   } catch (error) {
     console.error('❌ Error en Google TTS:', error.message);
     res.status(500).json({ error: 'Error generando audio: ' + error.message });

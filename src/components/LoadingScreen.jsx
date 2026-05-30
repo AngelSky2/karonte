@@ -16,7 +16,7 @@ function LoadingScreen({ onLoadingComplete }) {
 
     const attemptSpeak = async () => {
       try {
-        console.log('🎤 Solicitando síntesis de voz al backend...');
+        console.log('Solicitando síntesis de voz al backend...');
         
         const response = await fetch('http://localhost:5000/api/voice/synthesize', {
           method: 'POST',
@@ -42,7 +42,7 @@ function LoadingScreen({ onLoadingComplete }) {
         audio.volume = 1;
         
         audio.onended = () => {
-          console.log('✓ Audio completado');
+          console.log('[OK] Audio completado');
           URL.revokeObjectURL(audioUrl);
           completeLoading();
         };

@@ -76,8 +76,8 @@ function TaskFormModal({ isOpen, onClose, onSave }) {
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal-content form-modal" onClick={(e) => e.stopPropagation()}>
           <div className="modal-header">
-            <h2>➕ Nueva Tarea</h2>
-            <button className="close-btn" onClick={onClose}>✕</button>
+            <h2>+ Nueva Tarea</h2>
+            <button className="close-btn" onClick={onClose}>X</button>
           </div>
 
           <div className="modal-body form-body">
@@ -133,7 +133,7 @@ function TaskFormModal({ isOpen, onClose, onSave }) {
                         onClick={() => handleRemoveChecklistItem(idx)}
                         className="btn-remove"
                       >
-                        ✕
+                        X
                       </button>
                     )}
                   </div>

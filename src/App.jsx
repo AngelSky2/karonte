@@ -6,6 +6,7 @@ import Chat from './components/terminal/chat';
 import Input from './components/input';
 import TasksView from './components/tasks/TasksView';
 import MissionInfo from './components/mission/MissionInfo';
+import FinanceView from './components/finance/FinanceView';
 import LoadingScreen from './components/LoadingScreen';
 import AIAnimation from './components/AIAnimation';
 
@@ -53,6 +54,8 @@ function App() {
               <TasksView />
             ) : activeTab === 'mission' ? (
               <MissionInfo />
+            ) : activeTab === 'ahorros' ? (
+              <FinanceView />
             ) : (
               <Chat activeTab={activeTab} refreshTrigger={messageRefresh} userMessage={userMessage} onMessageDisplayed={() => setUserMessage(null)} isLoading={isLoading} onLoadingComplete={() => setIsLoading(false)} />
             )}
